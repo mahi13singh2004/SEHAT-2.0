@@ -27,14 +27,8 @@ const userSchema=new mongoose.Schema({
         default:[]
     },
     rating:{
-        totalRating:{
-            type:Number,
-            default:0
-        },
-        numberOfRatings:{
-            type:Number,
-            default:0
-        },
+        type:Number,
+        default:0
     },
 })
 

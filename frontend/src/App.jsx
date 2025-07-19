@@ -11,6 +11,9 @@ import Home from './pages/Home'
 import DoctorOnly from './components/DoctorOnly'
 import PatientOnly from './components/PatientOnly'
 import Navbar from './components/Navbar'
+import BookAppointment from './pages/BookAppointment'
+import TimeSlot from './pages/TimeSlot.jsx'
+import ConfirmPage from './pages/ConfirmPage.jsx'
 
 const App = () => {
   const {checkAuth}=useAuthStore()
@@ -27,6 +30,9 @@ const App = () => {
         <Route path="/doctor/dashboard" element={<DoctorOnly><DoctorDashboard /></DoctorOnly>} />
         <Route path="/patient/dashboard" element={<PatientOnly><PatientDashboard /></PatientOnly>} />
         <Route path="/" element={<Home />} />
+        <Route path="/book" element={<BookAppointment />} />
+        <Route path="/time-slot" element={<TimeSlot />} />
+        <Route path="/confirm" element={<ConfirmPage />} />
       </Routes>
     </>
   )

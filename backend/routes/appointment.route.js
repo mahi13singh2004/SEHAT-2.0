@@ -1,5 +1,6 @@
 import express from "express"
 import protectRoute from "../middlewares/protectRoute.js"
+import { createAppointment, getPatientAppointments, getDoctorAppointments, updateAppointmentStatus } from "../controllers/appointment.controller.js"
 const router=express.Router()
 
 router.post("/",protectRoute,createAppointment)

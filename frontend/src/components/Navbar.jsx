@@ -23,6 +23,10 @@ const Navbar = () => {
                     <img className="h-16 w-16 rounded-full object-contain border-2 border-green-200 shadow" src={image} alt="Logo" />
                 </Link>
 
+                <Link to="/book">
+                Book
+                </Link>
+
                 <div className="text-xl font-bold flex items-center gap-4 ">
                     {user && user.role === "patient" && (
                         <Link to="/patient/dashboard">

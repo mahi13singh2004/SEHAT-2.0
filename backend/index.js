@@ -3,6 +3,8 @@ import dotenv from "dotenv";
 import connectDB from "./DB/connectDB.js";
 import authRoutes from "./routes/auth.route.js";
 import aiRoutes from "./routes/ai.route.js"
+import appointmentRoutes from "./routes/appointment.route.js"
+import listRoutes from "./routes/list.route.js"
 import cookieParser from "cookie-parser";
 import cors from "cors"
 
@@ -20,6 +22,7 @@ app.use(cors({
 app.use("/api/auth",authRoutes);
 app.use("/api/ai",aiRoutes)
 app.use("/api/appointment",appointmentRoutes)
+app.use("/api/list",listRoutes)
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

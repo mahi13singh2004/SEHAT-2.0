@@ -7,7 +7,7 @@ const PatientDashboard = () => {
     <>
       <div>
         <div>
-          <h1>Hello Your Are {user.name} And You Are A Patient</h1>
+          <h1>Welcome To Patient Dashboard {user.name}</h1>
         </div>
       </div>
     </>

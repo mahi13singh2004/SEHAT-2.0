@@ -1,13 +1,39 @@
-import React from 'react'
-import { useAuthStore } from '../store/auth.store.js'
+import React, { useEffect } from 'react'
+import { useAppointmentStore } from '../store/appointment.store.js'
 
 const PatientDashboard = () => {
-  const {user}=useAuthStore() 
+  const {appointments,loading,err,fetchAppointments}=useAppointmentStore()
+
+  useEffect(()=>{
+    fetchAppointments()
+  },[fetchAppointments])
   return (
     <>
       <div>
         <div>
-          <h1>Welcome To Patient Dashboard {user.name}</h1>
+
+          <h2>Your Appointments</h2>
+          {err && <p>{err}</p>}
+          {loading && <p>Loading...</p>}
+
+          {appointments.lentgh === 0 && !loading ?
+            (
+              <p>No Appointments</p>
+            )
+            :
+            (
+              appointments.map((appointment) => (
+                <div key={appointment._id}>
+                  <h3>Doctor:{appointment.doctorId.name}</h3>
+                  <p>Specialization: {appointment.doctorId.specialization}</p>
+                  <p>Time: {appointment.time}</p>
+                  <p>Status: <strong>{appointment.status}</strong></p>
+                  <p>Booked At: {new Date(appointment.createdAt).toLocaleString()}</p>
+                </div>
+              ))
+            )
+          }
+
         </div>
       </div>
     </>

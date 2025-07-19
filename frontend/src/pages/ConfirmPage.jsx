@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react'
-import { useDoctorStore } from '../store/doctor.store.js'
+import { useAppointmentStore } from '../store/appointment.store.js'
 import { useAuthStore } from '../store/auth.store.js'
 import { useNavigate } from 'react-router-dom'
 
 const ConfirmPage = () => {
-    const { selectedDoctor, selectedTime, confirmAppointment } = useDoctorStore()
+    const { selectedDoctor, selectedTime, confirmAppointment } = useAppointmentStore()
     const { user } = useAuthStore()
     const navigate = useNavigate()
 

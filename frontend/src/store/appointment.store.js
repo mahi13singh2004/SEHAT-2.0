@@ -3,13 +3,14 @@ import { create } from "zustand";
 
 axios.defaults.withCredentials = true;
 
-export const useDoctorStore = create((set) => ({
+export const useAppointmentStore = create((set) => ({
   recommendedDoctor: null,
   manualDoctors: [],
   selectedDoctor: null,
   loading: false,
   err: null,
   selectedTime: null,
+  appointments:[],
 
   setRecommendedDoctors: (doctor) => set({ recommendedDoctor: doctor }),
   setManualDoctors: (doctors) => set({ manualDoctors: doctors }),
@@ -48,7 +49,7 @@ export const useDoctorStore = create((set) => ({
   },
 
   confirmAppointment: async () => {
-    const { selectedDoctor, selectedTime } = useDoctorStore.getState(); // ✅ FIXED
+    const { selectedDoctor, selectedTime } = useAppointmentStore.getState();
     try {
       set({ loading: true });
       await axios.post("http://localhost:5000/api/appointment", {
@@ -65,4 +66,18 @@ export const useDoctorStore = create((set) => ({
       set({ loading: false });
     }
   },
+
+  fetchAppointments:async()=>{
+    try {
+      set({loading:true})
+      const res=await axios.get("http://localhost:5000/api/appointment/patient")
+      set({appointments:res.data.appointments})
+    } 
+    catch (error) {
+      set({err:error.response?.data?.message || "Unable to get appointments"})
+    }
+    finally{
+      set({loading:false})
+    }
+  }
 }));

@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import { useDoctorStore } from '../store/doctor.store.js'
 import { useNavigate } from "react-router-dom"
+import { useAppointmentStore } from '../store/appointment.store.js'
 
 const TimeSlot = () => {
-    const { selectedDoctor, setSelectedTime } = useDoctorStore()
+    const { selectedDoctor, setSelectedTime } = useAppointmentStore()
     const [selectedSlot, setSelectedSlot] = useState(null)
     const navigate = useNavigate()
 

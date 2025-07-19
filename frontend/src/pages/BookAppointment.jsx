@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useDoctorStore } from '../store/doctor.store.js'
+import { useAppointmentStore } from '../store/appointment.store.js'
 
 const BookAppointment = () => {
 
-    const {setSelectedDoctor,recommendedDoctor,fetchRecommendedDoctor,err,loading,fetchManualDoctors,manualDoctors}=useDoctorStore()
+    const {setSelectedDoctor,recommendedDoctor,fetchRecommendedDoctor,err,loading,fetchManualDoctors,manualDoctors}=useAppointmentStore()
 
     const [description,setDescription]=useState("")
     const navigate=useNavigate()

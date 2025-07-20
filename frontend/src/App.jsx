@@ -14,6 +14,7 @@ import Navbar from './components/Navbar'
 import BookAppointment from './pages/BookAppointment'
 import TimeSlot from './pages/TimeSlot.jsx'
 import ConfirmPage from './pages/ConfirmPage.jsx'
+import RestrictedRoute from './components/RestrictedRoute.jsx'
 
 const App = () => {
   const {checkAuth}=useAuthStore()
@@ -24,9 +25,9 @@ const App = () => {
     <>
     <Navbar/>
       <Routes>
-        <Route path="/select" element={<SelectRole />} />
-        <Route path="/signup/:role" element={<Signup />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/select" element={<RestrictedRoute><SelectRole /></RestrictedRoute>} />
+        <Route path="/signup/:role" element={<RestrictedRoute><Signup /></RestrictedRoute>} />
+        <Route path="/login" element={<RestrictedRoute><Login /></RestrictedRoute>} />
         <Route path="/doctor/dashboard" element={<DoctorOnly><DoctorDashboard /></DoctorOnly>} />
         <Route path="/patient/dashboard" element={<PatientOnly><PatientDashboard /></PatientOnly>} />
         <Route path="/" element={<Home />} />

@@ -79,5 +79,36 @@ export const useAppointmentStore = create((set) => ({
     finally{
       set({loading:false})
     }
+  },
+
+  getDoctorAppointments:async()=>{
+    try {
+      set({loading:true})
+      const res=await axios.get("http://localhost:5000/api/appointment/doctor")
+      set({appointments:res.data.appointments})
+    } 
+    catch (error) {
+      set({err:error.response?.data?.message || "Unable to get appointments"})
+      throw error
+    }
+    finally{
+      set({loading:false})
+    }
+  },
+
+  updateAppointmentStatus:async(id,status)=>{
+    try {
+      set({loading:true})
+      await axios.put(`http://localhost:5000/api/appointment/update/${id}`,{status})
+      const res=await axios.get("http://localhost:5000/api/appointment/doctor")
+      set({appointments:res.data.appointments})
+    } 
+    catch (error) {
+      set({err:error.response?.data?.message || "Unable to get appointments"})
+      throw error
+    }
+    finally{
+      set({loading:false})
+    }
   }
 }));

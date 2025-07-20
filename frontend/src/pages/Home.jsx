@@ -1,5 +1,5 @@
 import React from 'react'
-import logo from "../assets/logo4.jpg"
+import header from "../assets/header.jpg"
 
 const Home = () => {
   return (
@@ -7,7 +7,7 @@ const Home = () => {
       <div className='w-full min-h-[calc(100vh-7rem)] bg-gradient-to-r from-white via-blue-100 to-blue-200'>
         <div className='hero bg-gradient-to-r from-white via-blue-100 to-blue-200 w-full h-[70vh] flex' >
           <div className='w-1/2 h-full overflow-hidden'>
-            <img className='w-full h-full rounded-full' src={logo} />
+            <img className='w-full h-full rounded-full' src={header} />
           </div>
 
           <div className='w-1/2 h-full justify-center items-center flex flex-col p-12'>

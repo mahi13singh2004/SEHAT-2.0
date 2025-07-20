@@ -1,9 +1,8 @@
 import React, { useEffect } from 'react'
 import { useAuthStore } from '../store/auth.store.js'
 import { Navigate } from 'react-router-dom'
-import Spinner from './Spinner'
 
-const ProtectedRoute = ({ children }) => {
+const RestrictedRoute = ({ children }) => {
   const { user, loading, checkAuth } = useAuthStore()
 
   useEffect(() => {
@@ -12,9 +11,9 @@ const ProtectedRoute = ({ children }) => {
     }
   }, [user, checkAuth]);
 
-  if (loading) return <Spinner className="my-12" />
-  if (!user) return <Navigate to="/login" />
+  if (loading) return <p>....Loading</p>
+  if (user) return <Navigate to="/" />
   return children
 }
 
-export default ProtectedRoute
+export default RestrictedRoute

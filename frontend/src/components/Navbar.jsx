@@ -20,7 +20,6 @@ const Navbar = () => {
         }
     }
 
-    // Close dropdown on outside click
     useEffect(() => {
         function handleClickOutside(event) {
             if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -45,7 +44,6 @@ const Navbar = () => {
                 </Link>
 
                 <div className="text-xl font-bold flex items-center gap-4 ">
-                    {/* Features Dropdown - only for logged in users */}
                     {user && (
                         <div className="relative" ref={dropdownRef}>
                             <button

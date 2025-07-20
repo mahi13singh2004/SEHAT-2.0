@@ -61,7 +61,6 @@ const Signup = () => {
     }
   }
 
-  // Choose image based on role
   const sideImg = role === 'doctor' ? doctorImg : patientImg;
 
   return (
@@ -150,7 +149,6 @@ const Signup = () => {
             <p className="text-gray-600">Already Signed Up? <Link to="/login" className="text-blue-500 hover:underline font-semibold">Login</Link></p>
           </div>
         </div>
-        {/* Image Side */}
         <div className="hidden md:block md:w-1/2 bg-cover bg-center" style={{ backgroundImage: `url(${sideImg})` }}>
         </div>
       </div>

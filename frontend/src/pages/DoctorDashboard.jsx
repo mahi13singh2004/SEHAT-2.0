@@ -10,7 +10,7 @@ const DoctorDashboard = () => {
     loading,
     err,
   } = useAppointmentStore();
-  const [tab, setTab] = useState('current'); // 'current' or 'past'
+  const [tab, setTab] = useState('current'); 
 
   useEffect(() => {
     getDoctorAppointments();
@@ -24,20 +24,17 @@ const DoctorDashboard = () => {
     }
   };
 
-  // Example summary data (could be replaced with real stats)
   const total = appointments.length;
   const pending = appointments.filter(a => a.status === 'pending').length;
   const accepted = appointments.filter(a => a.status === 'accepted').length;
   const completed = appointments.filter(a => a.status === 'completed').length;
 
-  // Filtered appointments
   const currentAppointments = appointments.filter(a => a.status === 'pending' || a.status === 'accepted');
   const pastAppointments = appointments.filter(a => a.status === 'completed');
 
   return (
     <div className="min-h-[calc(100vh-7rem)] flex items-stretch bg-gradient-to-br from-blue-50 via-green-100 to-blue-200 py-8 px-4">
       <div className="w-full max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-        {/* Left Column: Summary/Sidebar */}
         <div className="col-span-1 bg-white rounded-2xl shadow-2xl p-8 flex flex-col gap-8 justify-between min-h-[32rem]">
           <div>
             <h2 className="text-2xl font-extrabold text-blue-700 mb-4 text-center">Doctor Dashboard</h2>
@@ -61,9 +58,7 @@ const DoctorDashboard = () => {
             </div>
           </div>
         </div>
-        {/* Right Column: Appointments */}
         <div className="col-span-2 flex flex-col gap-8">
-          {/* Tabs */}
           <div className="flex gap-4 mb-4">
             <button
               className={`px-6 py-2 rounded-t-lg font-bold text-lg transition-colors duration-200 focus:outline-none ${tab === 'current' ? 'bg-blue-500 text-white shadow' : 'bg-blue-100 text-blue-700 hover:bg-blue-200'}`}

@@ -10,7 +10,7 @@ const DoctorDashboard = () => {
     loading,
     err,
   } = useAppointmentStore();
-  const [tab, setTab] = useState('current'); 
+  const [tab, setTab] = useState('current');
 
   useEffect(() => {
     getDoctorAppointments();
@@ -86,6 +86,30 @@ const DoctorDashboard = () => {
                     <p className="text-gray-700"><span className="font-semibold">Email:</span> {appt.patientId?.email}</p>
                     <p className="text-gray-700"><span className="font-semibold">Time:</span> {appt.time}</p>
                     <p className="text-gray-700"><span className="font-semibold">Status:</span> <span className="font-bold">{appt.status}</span></p>
+                    {appt.documentUrl && (
+                      <div className="mt-2">
+                        <span className="font-semibold text-gray-700">Attachment: </span>
+                        {/(\.pdf($|\?))/i.test(appt.documentUrl) || appt.documentUrl.includes('/raw/upload/') ? (
+                          <a
+                            href={appt.documentUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-blue-600 underline"
+                          >
+                            View PDF
+                          </a>
+                        ) : (
+                          <a
+                            href={appt.documentUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-blue-600 underline"
+                          >
+                            View Picture
+                          </a>
+                        )}
+                      </div>
+                    )}
                     {appt.status === "pending" && (
                       <div className="flex gap-2 mt-2">
                         <button onClick={() => handleStatusUpdate(appt._id, "accepted")}

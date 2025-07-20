@@ -10,7 +10,7 @@ export const useAppointmentStore = create((set) => ({
   loading: false,
   err: null,
   selectedTime: null,
-  appointments:[],
+  appointments: [],
 
   setRecommendedDoctors: (doctor) => set({ recommendedDoctor: doctor }),
   setManualDoctors: (doctors) => set({ manualDoctors: doctors }),
@@ -48,13 +48,14 @@ export const useAppointmentStore = create((set) => ({
     }
   },
 
-  confirmAppointment: async () => {
+  confirmAppointment: async (documentUrl) => {
     const { selectedDoctor, selectedTime } = useAppointmentStore.getState();
     try {
       set({ loading: true });
       await axios.post("http://localhost:5000/api/appointment", {
         doctorId: selectedDoctor._id,
         time: selectedTime,
+        documentUrl: documentUrl || null,
       });
       set({ selectedDoctor: null, selectedTime: null });
     } catch (error) {
@@ -67,48 +68,56 @@ export const useAppointmentStore = create((set) => ({
     }
   },
 
-  fetchAppointments:async()=>{
+  fetchAppointments: async () => {
     try {
-      set({loading:true})
-      const res=await axios.get("http://localhost:5000/api/appointment/patient")
-      set({appointments:res.data.appointments})
-    } 
-    catch (error) {
-      set({err:error.response?.data?.message || "Unable to get appointments"})
-    }
-    finally{
-      set({loading:false})
+      set({ loading: true });
+      const res = await axios.get(
+        "http://localhost:5000/api/appointment/patient"
+      );
+      set({ appointments: res.data.appointments });
+    } catch (error) {
+      set({
+        err: error.response?.data?.message || "Unable to get appointments",
+      });
+    } finally {
+      set({ loading: false });
     }
   },
 
-  getDoctorAppointments:async()=>{
+  getDoctorAppointments: async () => {
     try {
-      set({loading:true})
-      const res=await axios.get("http://localhost:5000/api/appointment/doctor")
-      set({appointments:res.data.appointments})
-    } 
-    catch (error) {
-      set({err:error.response?.data?.message || "Unable to get appointments"})
-      throw error
-    }
-    finally{
-      set({loading:false})
+      set({ loading: true });
+      const res = await axios.get(
+        "http://localhost:5000/api/appointment/doctor"
+      );
+      set({ appointments: res.data.appointments });
+    } catch (error) {
+      set({
+        err: error.response?.data?.message || "Unable to get appointments",
+      });
+      throw error;
+    } finally {
+      set({ loading: false });
     }
   },
 
-  updateAppointmentStatus:async(id,status)=>{
+  updateAppointmentStatus: async (id, status) => {
     try {
-      set({loading:true})
-      await axios.put(`http://localhost:5000/api/appointment/update/${id}`,{status})
-      const res=await axios.get("http://localhost:5000/api/appointment/doctor")
-      set({appointments:res.data.appointments})
-    } 
-    catch (error) {
-      set({err:error.response?.data?.message || "Unable to get appointments"})
-      throw error
+      set({ loading: true });
+      await axios.put(`http://localhost:5000/api/appointment/update/${id}`, {
+        status,
+      });
+      const res = await axios.get(
+        "http://localhost:5000/api/appointment/doctor"
+      );
+      set({ appointments: res.data.appointments });
+    } catch (error) {
+      set({
+        err: error.response?.data?.message || "Unable to get appointments",
+      });
+      throw error;
+    } finally {
+      set({ loading: false });
     }
-    finally{
-      set({loading:false})
-    }
-  }
+  },
 }));

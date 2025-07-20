@@ -1,14 +1,18 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAppointmentStore } from '../store/appointment.store.js'
 import Spinner from '../components/Spinner';
 
 const BookAppointment = () => {
-
-    const { setSelectedDoctor, recommendedDoctor, fetchRecommendedDoctor, err, loading, fetchManualDoctors, manualDoctors } = useAppointmentStore()
-
+    const { setSelectedDoctor, recommendedDoctor, fetchRecommendedDoctor, err, loading, fetchManualDoctors, manualDoctors, setRecommendedDoctors } = useAppointmentStore()
     const [description, setDescription] = useState("")
     const navigate = useNavigate()
+
+    useEffect(() => {
+        return () => {
+            setRecommendedDoctors(null);
+        };
+    }, [setRecommendedDoctors]);
 
     const handleAIRecommendation = async () => {
         try {

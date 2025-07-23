@@ -1,5 +1,6 @@
 import { gemini } from "../utils/gemini.js";
 import User from "../models/user.model.js"
+import { symptom } from "../utils/symptom.js";
 
 export const recommendDoctor = async (req, res) => {
   try {
@@ -31,3 +32,19 @@ export const recommendDoctor = async (req, res) => {
     return res.status(500).json({ message: "Internal Server Error" });
   }
 };
+
+export const fetchSymptom=async(req,res)=>{
+  try {
+    const {prompt}=req.body
+    if(!prompt){
+      return res.status(400).json({message:"Please provide prompt"})
+    }
+    const response=await symptom(prompt)
+    console.log("Symptoms Recieved From Gemini:", response);
+    return res.status(200).json({message:"Symptoms Fetched Successfully",response})
+  } 
+  catch (error) {
+    console.error("Error in recommendDoctor:", error);
+    return res.status(500).json({ message: "Internal Server Error" });
+  }
+}

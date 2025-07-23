@@ -6,6 +6,7 @@ import feature3 from "../assets/feature3.jpg"
 import feature4 from "../assets/feature4.jpg"
 import feature5 from "../assets/feature5.jpg"
 import feature6 from "../assets/feature6.jpg"
+import { Link } from 'react-router-dom'
 
 
 const Home = () => {
@@ -32,42 +33,49 @@ const Home = () => {
             {[{
               img: feature1,
               title: 'Appointment Booking',
-              desc: 'Easily book appointments at your fingertips online, hassle free.'
+              desc: 'Easily book appointments at your fingertips online, hassle free.',
+              route: '/book'
             }, {
               img: feature2,
               title: 'Mental Health Zone',
-              desc: 'Track Your Mental Health And Stay Fit- emotionally'
+              desc: 'Track Your Mental Health And Stay Fit- emotionally',
+              route: '/mental'
             }, {
               img: feature3,
               title: 'Maternity Center',
-              desc: 'Get support and guidance for your pregnancy journey.'
+              desc: 'Get support and guidance for your pregnancy journey.',
+              route: '/maternity'
             }, {
               img: feature4,
               title: 'Private Vault',
-              desc: 'Keep Your Important Documents, Secured'
+              desc: 'Keep Your Important Documents, Secured',
+              route: '/private'
             }, {
               img: feature5,
               title: 'Medicine Tracker',
-              desc: 'Keep Track Of Your Medicines, Each Day, Every Day'
+              desc: 'Keep Track Of Your Medicines, Each Day, Every Day',
+              route: '/track'
             }, {
               img: feature6,
-              title: 'Symptom Checker',
-              desc: 'AI Symptom Analayzer'
+              title: 'CareMate',
+              desc: 'AI Assisted HealthCare Assistant',
+              route: '/symptom'
             }].map((f, i) => (
-              <div
-                key={i}
-                className='relative rounded-3xl p-1 w-80 mx-auto transition-transform duration-200 hover:scale-105 group bg-gradient-to-br from-green-100 via-blue-50 to-blue-400'
-              >
-                <div className='bg-white bg-opacity-90 rounded-2xl shadow-xl p-8 flex flex-col items-center h-full'>
-                  <div className="absolute -top-10 left-1/2 -translate-x-1/2 flex items-center justify-center w-24 h-24 rounded-full bg-gradient-to-br from-green-300 via-blue-400 to-green-100 shadow-lg border-4 border-white">
-                    <img className='h-16 w-16 object-cover rounded-xl' src={f.img} alt={f.title} />
-                  </div>
-                  <div className="mt-16 flex flex-col items-center">
-                    <h2 className='text-2xl font-extrabold mb-2 text-blue-700 text-center drop-shadow'>{f.title}</h2>
-                    <p className='text-gray-600 text-center text-base font-medium'>{f.desc}</p>
+              <Link to={f.route} key={i} className="block focus:outline-none">
+                <div
+                  className='relative rounded-3xl p-1 w-80 mx-auto transition-transform duration-200 hover:scale-105 group bg-gradient-to-br from-green-100 via-blue-50 to-blue-400'
+                >
+                  <div className='bg-white bg-opacity-90 rounded-2xl shadow-xl p-8 flex flex-col items-center h-full'>
+                    <div className="absolute -top-10 left-1/2 -translate-x-1/2 flex items-center justify-center w-24 h-24 rounded-full bg-gradient-to-br from-green-300 via-blue-400 to-green-100 shadow-lg border-4 border-white">
+                      <img className='h-16 w-16 object-cover rounded-xl' src={f.img} alt={f.title} />
+                    </div>
+                    <div className="mt-16 flex flex-col items-center">
+                      <h2 className='text-2xl font-extrabold mb-2 text-blue-700 text-center drop-shadow'>{f.title}</h2>
+                      <p className='text-gray-600 text-center text-base font-medium'>{f.desc}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

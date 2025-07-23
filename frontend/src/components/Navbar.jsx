@@ -55,13 +55,15 @@ const Navbar = () => {
                             </button>
                             {dropdownOpen && (
                                 <div className="absolute left-0 mt-2 w-56 bg-white rounded-xl shadow-lg py-2 z-50 border border-blue-100 animate-fade-in">
-                                    <Link
-                                        to="/book"
-                                        className="block px-6 py-3 text-blue-700 hover:bg-blue-100 hover:text-blue-900 transition-colors duration-150 text-lg font-medium"
-                                        onClick={() => setDropdownOpen(false)}
-                                    >
-                                        Book Appointment
-                                    </Link>
+                                    {user.role === 'patient' && (
+                                        <Link
+                                            to="/book"
+                                            className="block px-6 py-3 text-blue-700 hover:bg-blue-100 hover:text-blue-900 transition-colors duration-150 text-lg font-medium"
+                                            onClick={() => setDropdownOpen(false)}
+                                        >
+                                            Book Appointment
+                                        </Link>
+                                    )}
                                     {user.role === 'patient' && (
                                         <Link
                                             to="/patient/dashboard"
@@ -78,6 +80,24 @@ const Navbar = () => {
                                             onClick={() => setDropdownOpen(false)}
                                         >
                                             Doctor Dashboard
+                                        </Link>
+                                    )}
+                                    {user.role === 'patient' && (
+                                        <Link
+                                            to="/symptom"
+                                            className="block px-6 py-3 text-blue-700 hover:bg-blue-100 hover:text-blue-900 transition-colors duration-150 text-lg font-medium"
+                                            onClick={() => setDropdownOpen(false)}
+                                        >
+                                            CareMate
+                                        </Link>
+                                    )}
+                                    {user.role === 'patient' && (
+                                        <Link
+                                            to="/track"
+                                            className="block px-6 py-3 text-blue-700 hover:bg-blue-100 hover:text-blue-900 transition-colors duration-150 text-lg font-medium"
+                                            onClick={() => setDropdownOpen(false)}
+                                        >
+                                            SehatPal
                                         </Link>
                                     )}
                                 </div>

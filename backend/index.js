@@ -6,6 +6,7 @@ import aiRoutes from "./routes/ai.route.js"
 import appointmentRoutes from "./routes/appointment.route.js"
 import listRoutes from "./routes/list.route.js"
 import cookieParser from "cookie-parser";
+import reminderRoutes from "./routes/reminder.route.js"
 import cors from "cors"
 
 const app = express();
@@ -23,6 +24,7 @@ app.use("/api/auth",authRoutes);
 app.use("/api/ai",aiRoutes)
 app.use("/api/appointment",appointmentRoutes)
 app.use("/api/list",listRoutes)
+app.use("/api/reminder",reminderRoutes)
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

@@ -15,15 +15,17 @@ import BookAppointment from './pages/BookAppointment'
 import TimeSlot from './pages/TimeSlot.jsx'
 import ConfirmPage from './pages/ConfirmPage.jsx'
 import RestrictedRoute from './components/RestrictedRoute.jsx'
+import SymptomChecker from './pages/features/SymptomChecker.jsx'
+import Reminder from './pages/features/Reminder.jsx'
 
 const App = () => {
-  const {checkAuth}=useAuthStore()
-  useEffect(()=>{
+  const { checkAuth } = useAuthStore()
+  useEffect(() => {
     checkAuth()
-  },[checkAuth])
+  }, [checkAuth])
   return (
     <>
-    <Navbar/>
+      <Navbar />
       <Routes>
         <Route path="/select" element={<RestrictedRoute><SelectRole /></RestrictedRoute>} />
         <Route path="/signup/:role" element={<RestrictedRoute><Signup /></RestrictedRoute>} />
@@ -34,6 +36,8 @@ const App = () => {
         <Route path="/book" element={<BookAppointment />} />
         <Route path="/time-slot" element={<TimeSlot />} />
         <Route path="/confirm" element={<ConfirmPage />} />
+        <Route path="/symptom" element={<SymptomChecker />} />
+        <Route path="/track" element={<Reminder />} />
       </Routes>
     </>
   )

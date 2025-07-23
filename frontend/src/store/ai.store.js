@@ -21,5 +21,7 @@ export const useAiStore = create((set) => ({
     finally{
         set({loading:false})
     }
-  }
+  },
+
+  clearResponse: () => set({ response: null, err: null }),
 }));

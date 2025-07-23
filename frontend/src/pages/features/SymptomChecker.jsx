@@ -1,16 +1,22 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useAiStore } from '../../store/ai.store.js'
 import symptom from "../../assets/symptom.jpg"
 
 const SymptomChecker = () => {
   const [prompt, setPrompt] = useState("")
-  const { fetchSymptom, loading, response, err } = useAiStore()
+  const { fetchSymptom, loading, response, err,clearResponse } = useAiStore()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     await fetchSymptom(prompt)
     setPrompt("")
   }
+
+  useEffect(() => {
+    return () => {
+      clearResponse() 
+    }
+  }, [])
 
   return (
     <div className="min-h-[calc(100vh-7rem)] flex flex-col items-center justify-center bg-gradient-to-br from-blue-50 via-green-100 to-blue-200 py-10 px-2 md:px-6 overflow-y-visible">

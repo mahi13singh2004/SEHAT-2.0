@@ -25,6 +25,12 @@ const appointmentSchema = new mongoose.Schema(
       type: String,
       default: null,
     },
+    rating: {
+      type: Number,
+      min: 1,
+      max: 5,
+      default: null,
+    },
   },
   { timestamps: true }
 );

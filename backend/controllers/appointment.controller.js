@@ -87,14 +87,59 @@ export const updateAppointmentStatus = async (req, res) => {
 
     appointment.status = status;
     await appointment.save();
-    return res
-      .status(200)
-      .json({
-        message: "Appointment Status Updated Successfully",
-        appointment,
-      });
+    return res.status(200).json({
+      message: "Appointment Status Updated Successfully",
+      appointment,
+    });
   } catch (error) {
     console.log("Error in updating appointment", error);
+    return res.status(500).json({ message: "Internal Server Error" });
+  }
+};
+
+export const rateDoctor = async (req, res) => {
+  try {
+    const patientId = req.user._id;
+    const { appointmentId, rating } = req.body;
+    if (!appointmentId || !rating || rating < 1 || rating > 5) {
+      return res.status(400).json({ message: "Invalid appointment or rating" });
+    }
+    const appointment = await Appointment.findOne({
+      _id: appointmentId,
+      patientId,
+      status: "completed",
+    });
+    if (!appointment) {
+      return res
+        .status(400)
+        .json({ message: "Appointment not found or not completed" });
+    }
+    if (appointment.rating) {
+      return res.status(400).json({ message: "Already rated" });
+    }
+    appointment.rating = rating;
+    await appointment.save();
+    const doctor = await User.findOne({
+      _id: appointment.doctorId,
+      role: "doctor",
+    });
+    if (!doctor) {
+      return res.status(400).json({ message: "Doctor not found" });
+    }
+    let newRating = doctor.rating;
+    if (rating >= 3) {
+      newRating = parseFloat((doctor.rating + 0.1).toFixed(2));
+    } else {
+      newRating = parseFloat((doctor.rating - 0.1).toFixed(2));
+      if (newRating < 0) newRating = 0;
+    }
+    doctor.rating = newRating;
+    await doctor.save();
+    return res
+      .status(200)
+      .json({ message: "Doctor rated successfully", doctor });
+  } catch (error) {
+    console.log("Error in rating doctor", error);
     return res.status(500).json({ message: "Internal Server Error" });
   }
 };

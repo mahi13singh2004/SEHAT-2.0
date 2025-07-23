@@ -2,10 +2,13 @@ import React, { useEffect, useState } from 'react'
 import { useAppointmentStore } from '../store/appointment.store.js'
 import Spinner from '../components/Spinner'
 import { FaCheckCircle, FaHourglassHalf, FaClipboardCheck } from 'react-icons/fa'
+import { FaStar } from 'react-icons/fa'
 
 const PatientDashboard = () => {
   const { appointments, loading, err, fetchAppointments } = useAppointmentStore()
-  const [tab, setTab] = useState('current') // 'current' or 'past'
+  const [tab, setTab] = useState('current')
+  const [ratingState, setRatingState] = useState({});
+  const [submitting, setSubmitting] = useState(false);
 
   useEffect(() => {
     fetchAppointments()
@@ -47,6 +50,37 @@ const PatientDashboard = () => {
 
   const currentAppointments = appointments.filter(a => a.status === 'pending' || a.status === 'accepted');
   const pastAppointments = appointments.filter(a => a.status === 'completed');
+
+  const handleRate = async (appointmentId, rating) => {
+    setSubmitting(true);
+    try {
+      const res = await fetch('http://localhost:5000/api/appointment/rate', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include',
+        body: JSON.stringify({ appointmentId, rating }),
+      });
+      let data;
+      try {
+        data = await res.json();
+      } catch {
+        data = { message: 'Invalid server response' };
+      }
+      if (res.ok) {
+        setRatingState((prev) => ({ ...prev, [appointmentId]: rating }));
+        fetchAppointments();
+      } else {
+        alert(data.message || 'Failed to rate');
+      }
+    } catch (e) {
+      alert('Failed to rate');
+      console.log(e)
+    } finally {
+      setSubmitting(false);
+    }
+  };
 
   return (
     <div className="min-h-[calc(100vh-7rem)] flex items-stretch bg-gradient-to-br from-blue-50 via-green-100 to-blue-200 py-8 px-4">
@@ -108,6 +142,38 @@ const PatientDashboard = () => {
                       <p className="text-gray-700"><span className="font-semibold">Specialization:</span> {appointment.doctorId.specialization}</p>
                       <p className="text-gray-700"><span className="font-semibold">Time:</span> {appointment.time}</p>
                       <p className="text-gray-700"><span className="font-semibold">Booked At:</span> {new Date(appointment.createdAt).toLocaleString()}</p>
+                      {tab === 'past' && (
+                        <div className="mt-2">
+                          {appointment.rating ? (
+                            <div className="flex items-center gap-2">
+                              <span className="font-semibold text-green-700">Rated:</span>
+                              {[...Array(appointment.rating)].map((_, i) => (
+                                <FaStar key={i} className="text-yellow-400" />
+                              ))}
+                            </div>
+                          ) : (
+                            <div className="flex flex-col gap-2">
+                              <span className="font-semibold text-blue-700">Rate your doctor:</span>
+                              <div className="flex gap-1">
+                                {[1, 2, 3, 4, 5].map((star) => (
+                                  <FaStar
+                                    key={star}
+                                    className={`cursor-pointer ${ratingState[appointment._id] >= star ? 'text-yellow-400' : 'text-gray-300'}`}
+                                    onClick={() => setRatingState((prev) => ({ ...prev, [appointment._id]: star }))}
+                                  />
+                                ))}
+                              </div>
+                              <button
+                                className="mt-1 px-4 py-1 rounded bg-blue-500 text-white font-semibold disabled:opacity-60"
+                                disabled={!ratingState[appointment._id] || submitting}
+                                onClick={() => handleRate(appointment._id, ratingState[appointment._id])}
+                              >
+                                {submitting ? 'Submitting...' : 'Submit Rating'}
+                              </button>
+                            </div>
+                          )}
+                        </div>
+                      )}
                     </div>
                   );
                 })

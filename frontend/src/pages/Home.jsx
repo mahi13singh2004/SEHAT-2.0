@@ -47,7 +47,7 @@ const Home = () => {
               route: '/maternity'
             }, {
               img: feature4,
-              title: 'Private Vault',
+              title: 'Sehat Vault',
               desc: 'Keep Your Important Documents, Secured',
               route: '/private'
             }, {

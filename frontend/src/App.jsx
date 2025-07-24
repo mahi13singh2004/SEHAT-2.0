@@ -17,6 +17,7 @@ import ConfirmPage from './pages/ConfirmPage.jsx'
 import RestrictedRoute from './components/RestrictedRoute.jsx'
 import SymptomChecker from './pages/features/SymptomChecker.jsx'
 import Reminder from './pages/features/Reminder.jsx'
+import VaultPage from './pages/features/VaultPage.jsx'
 
 const App = () => {
   const { checkAuth } = useAuthStore()
@@ -38,6 +39,7 @@ const App = () => {
         <Route path="/confirm" element={<ConfirmPage />} />
         <Route path="/symptom" element={<SymptomChecker />} />
         <Route path="/track" element={<Reminder />} />
+        <Route path="/vault" element={<VaultPage />} />
       </Routes>
     </>
   )

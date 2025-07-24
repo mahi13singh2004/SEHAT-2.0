@@ -100,6 +100,15 @@ const Navbar = () => {
                                             SehatPal
                                         </Link>
                                     )}
+                                    {user.role === 'patient' && (
+                                        <Link
+                                            to="/vault"
+                                            className="block px-6 py-3 text-blue-700 hover:bg-blue-100 hover:text-blue-900 transition-colors duration-150 text-lg font-medium"
+                                            onClick={() => setDropdownOpen(false)}
+                                        >
+                                            SehatVault
+                                        </Link>
+                                    )}
                                 </div>
                             )}
                         </div>

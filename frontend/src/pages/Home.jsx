@@ -49,7 +49,7 @@ const Home = () => {
               img: feature4,
               title: 'Sehat Vault',
               desc: 'Keep Your Important Documents, Secured',
-              route: '/private'
+              route: '/vault'
             }, {
               img: feature5,
               title: 'Medicine Tracker',

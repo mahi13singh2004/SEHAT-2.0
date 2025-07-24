@@ -10,7 +10,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@skits/react-text-scramble": "^1.1.0",
     "@tailwindcss/vite": "^4.1.11",
     "axios": "^1.10.0",
     "crypto-js": "^4.2.0",

@@ -103,7 +103,7 @@ Your mind matters too. Includes:
      ```
    - In `frontend/`, add:
      ```
-     VITE_API_URL=http://localhost:5000/api
+     VITE_API_URL=http://localhost:5000
      ```
 5. Run the backend:
    ```bash

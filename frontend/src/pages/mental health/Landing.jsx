@@ -6,6 +6,7 @@ import image2 from "../../assets/therapist.jpg"
 import image3 from "../../assets/map.jpg"
 import image4 from "../../assets/emergency.jpg"
 import image5 from "../../assets/mood.jpg"
+import { Link } from 'react-router-dom'
 const Landing = () => {
     return (
         <div className="min-h-[calc(100vh-7rem)] w-full flex-col p-12 justify-center bg-gradient-to-br from-blue-300 via-purple-200 to-pink-300">
@@ -56,26 +57,37 @@ const Landing = () => {
             </div>
 
             <div className='w-full flex gap-8 justify-center flex-wrap mt-8'>
-                {[{
-                    img: image2,
-                    title: 'AI Therapist',
-                    desc: 'Talk To Your Therapist, no strings attached'
-                }, {
-                    img: image5,
-                    title: 'Mood Tracker',
-                    desc: 'Track Your Mood, Day by day. Every Day'
-                }, {
-                    img: image3,
-                    title: 'Find Nearby Therapist',
-                    desc: 'Brcause, Why Not?'
-                }, {
-                    img: image4,
-                    title: 'Emergency Resources',
-                    desc: 'All Resources, with tap of a button'
-                }].map((feature, idx) => (
-                    <div
+                {[
+                    {
+                        img: image2,
+                        title: 'AI Therapist',
+                        desc: 'Talk To Your Therapist, no strings attached',
+                        to: '/therapist',
+                    },
+                    {
+                        img: image5,
+                        title: 'Mood Tracker',
+                        desc: 'Track Your Mood, Day by day. Every Day',
+                        to: '/track',
+                    },
+                    {
+                        img: image3,
+                        title: 'Find Nearby Therapist',
+                        desc: 'Brcause, Why Not?',
+                        to: '/find-therapist',
+                    },
+                    {
+                        img: image4,
+                        title: 'Emergency Resources',
+                        desc: 'All Resources, with tap of a button',
+                        to: '/resources',
+                    },
+                ].map((feature, idx) => (
+                    <Link
+                        to={feature.to}
                         key={idx}
-                        className='h-80 w-60 flex flex-col items-center text-center p-5 bg-white/80 rounded-2xl shadow-xl border border-purple-200 transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl hover:bg-purple-50 group relative'
+                        className='h-80 w-60 flex flex-col items-center text-center p-5 bg-white/80 rounded-2xl shadow-xl border border-purple-200 transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl hover:bg-purple-50 group relative no-underline'
+                        style={{ textDecoration: 'none' }}
                     >
                         <img
                             className='h-32 w-32 mb-4 rounded-full object-cover border-4 border-purple-200 shadow-md transition-transform duration-300 group-hover:scale-105'
@@ -85,7 +97,7 @@ const Landing = () => {
                         <div className='w-2/3 h-1 bg-gradient-to-r from-purple-300 via-pink-200 to-pink-300 rounded-full mb-4'></div>
                         <h1 className='text-2xl font-semibold text-purple-700 mb-2'>{feature.title}</h1>
                         <p className='text-lg text-gray-600'>{feature.desc}</p>
-                    </div>
+                    </Link>
                 ))}
             </div>
         </div>

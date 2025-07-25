@@ -19,6 +19,8 @@ import SymptomChecker from './pages/features/SymptomChecker.jsx'
 import Reminder from './pages/features/Reminder.jsx'
 import VaultPage from './pages/features/VaultPage.jsx'
 import Landing from './pages/mental health/Landing.jsx'
+import Therapist from './pages/mental health/Therapist.jsx'
+import Resources from './pages/mental health/Resources.jsx'
 
 const App = () => {
   const { checkAuth } = useAuthStore()
@@ -42,6 +44,8 @@ const App = () => {
         <Route path="/track" element={<Reminder />} />
         <Route path="/vault" element={<VaultPage />} />
         <Route path="/mentalHealth" element={<Landing />} />
+        <Route path="/therapist" element={<Therapist />} />
+        <Route path="/resources" element={<Resources />} />
       </Routes>
     </>
   )

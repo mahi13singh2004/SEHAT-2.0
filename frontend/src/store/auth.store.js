@@ -8,40 +8,44 @@ export const useAuthStore = create((set) => ({
   err: null,
   user: null,
 
-  signup:async(data)=>{
+  signup: async (data) => {
     try {
-      set({loading:true})
-      const res=await axios.post("https://sehat-2-0-backend.onrender.com/api/auth/signup",data)
-      set({user:res.data.user})
-    } 
-    catch (error) {
-      set({err:error.response?.data?.message || "Signup failed"})
-      throw error
-    }
-    finally{
-      set({loading:false})
+      set({ loading: true });
+      const res = await axios.post(
+        "https://sehat-2-0-backend.onrender.com/api/auth/signup",
+        data
+      );
+      set({ user: res.data.user });
+    } catch (error) {
+      set({ err: error.response?.data?.message || "Signup failed" });
+      throw error;
+    } finally {
+      set({ loading: false });
     }
   },
 
-  login:async(data)=>{
+  login: async (data) => {
     try {
-      set({loading:true})
-      const res=await axios.post("https://sehat-2-0-backend.onrender.com/api/auth/login",data)
-      set({user:res.data.user})
-    } 
-    catch (error) {
-      set({err:error.response?.data?.message || "Login failed"})
-      throw error
-    }
-    finally{
-      set({loading:false})
+      set({ loading: true });
+      const res = await axios.post(
+        "https://sehat-2-0-backend.onrender.com/api/auth/login",
+        data
+      );
+      set({ user: res.data.user });
+    } catch (error) {
+      set({ err: error.response?.data?.message || "Login failed" });
+      throw error;
+    } finally {
+      set({ loading: false });
     }
   },
 
   checkAuth: async () => {
     try {
       set({ loading: true, err: null });
-      const res = await axios.get("https://sehat-2-0-backend.onrender.com/api/auth/checkAuth");
+      const res = await axios.get(
+        "https://sehat-2-0-backend.onrender.com/api/auth/checkAuth"
+      );
       set({ user: res.data.user });
     } catch (error) {
       console.log("Check Auth Error:", error);
@@ -57,7 +61,11 @@ export const useAuthStore = create((set) => ({
   logout: async () => {
     try {
       set({ loading: true, err: null });
-      await axios.post("https://sehat-2-0-backend.onrender.com/api/auth/logout");
+      await axios.post(
+        "https://sehat-2-0-backend.onrender.com/api/auth/logout",
+        {},
+        { withCredentials: true }
+      );
       set({ user: null });
     } catch (error) {
       console.log("Logout Error:", error);

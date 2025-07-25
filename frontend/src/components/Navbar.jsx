@@ -151,8 +151,7 @@ const Navbar = () => {
             </Link>
           )}
         </div>
-
-        {/* Mobile Hamburger */}
+        
         <div className="flex md:hidden flex-1 justify-end">
           <button
             className="text-blue-700 focus:outline-none"

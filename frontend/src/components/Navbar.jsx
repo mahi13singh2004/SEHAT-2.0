@@ -45,7 +45,7 @@ const Navbar = () => {
 
                 <div className="text-xl font-bold flex items-center gap-4 ">
                     <div>
-                        {user.role === 'patient' && (
+                        {user && user.role === 'patient' && (
                             <Link
                                 to="/mentalHealth"
                                 className="px-6 py-2 cursor-pointer rounded-full bg-pink-400 hover:bg-pink-700 transition-colors duration-200 text-white font-semibold shadow"

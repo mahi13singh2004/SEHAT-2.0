@@ -50,7 +50,7 @@ const Reminder = () => {
     }
 
     try {
-      await axios.post("http://localhost:5000/api/reminder", {
+      await axios.post("https://sehat-2-0-backend.onrender.com/api/reminder", {
         userId: user._id,
         medicine,
         time,

@@ -12,7 +12,7 @@ export const useAiStore = create((set) => ({
   fetchSymptom:async(prompt)=>{
     try {
         set({loading:true})
-        const res=await axios.post("http://localhost:5000/api/ai/symptom",{prompt})
+        const res=await axios.post("https://sehat-2-0-backend.onrender.com/api/ai/symptom",{prompt})
         set({response:res.data.response})
     } 
     catch (error) {
@@ -29,7 +29,7 @@ export const useAiStore = create((set) => ({
   fetchTherapistResponse: async (prompt) => {
     try {
       set({ loading: true });
-      const res = await axios.post("http://localhost:5000/api/ai/therapist", {
+      const res = await axios.post("https://sehat-2-0-backend.onrender.com/api/ai/therapist", {
         prompt,
       });
       set({ therapistResponse: res.data.response });

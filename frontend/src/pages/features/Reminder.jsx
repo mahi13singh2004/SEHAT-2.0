@@ -68,7 +68,7 @@ const Reminder = () => {
   };
 
   const encodedEmail = encodeURIComponent(user.email);
-  const telegramBotUsername = "SehatPal_bot";
+  const telegramBotUsername = "SehatSathiBot";
   const telegramLink = `https://t.me/${telegramBotUsername}?start=${encodedEmail}`;
 
   return (

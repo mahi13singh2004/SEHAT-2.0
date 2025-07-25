@@ -6,6 +6,8 @@ const NearbyTherapists = () => {
   const [therapists, setTherapists] = useState([]);
   const [loading, setLoading] = useState(false);
   const [mapsLoaded, setMapsLoaded] = useState(false);
+  
+  const key=import.meta.env.VITE_GOOGLE_MAPS_API_KEY
 
   const findTherapists = () => {
     if (
@@ -97,7 +99,7 @@ const NearbyTherapists = () => {
 
   return (
     <LoadScript
-      googleMapsApiKey="AIzaSyAaB-rfgLYZ_GU1mUruQS7dhc7_cife4s0"
+      googleMapsApiKey={key}
       libraries={["places"]}
       onLoad={() => setMapsLoaded(true)}
       onError={() => alert("Failed to load Google Maps API.")}
@@ -127,7 +129,7 @@ const NearbyTherapists = () => {
 
             <div className="md:w-1/2 w-full flex flex-col">
               <h2 className="text-xl md:text-2xl font-bold text-blue-700 mb-4 text-center md:text-left">
-                Nearby Therapists
+                Nearby Therapists (Reload Page If Map Doesn't Load)
               </h2>
               <button
                 onClick={findTherapists}

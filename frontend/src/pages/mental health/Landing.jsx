@@ -58,7 +58,7 @@ const Landing = () => {
                     {
                         img: image4,
                         title: 'Emergency Resources',
-                        desc: 'All Resources, with tap of a button',
+                        desc: 'All Resources with a click',
                         to: '/resources',
                     },
                 ].map((feature, idx) => (

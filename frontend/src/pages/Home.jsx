@@ -37,9 +37,9 @@ const Home = () => {
               route: '/book'
             }, {
               img: feature2,
-              title: 'Mental Health Zone',
+              title: 'SEHAT SANCTUM',
               desc: 'Track Your Mental Health And Stay Fit- emotionally',
-              route: '/mental'
+              route: '/mentalHealth'
             }, {
               img: feature3,
               title: 'Maternity Center',

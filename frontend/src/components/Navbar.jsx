@@ -36,7 +36,6 @@ const Navbar = () => {
     };
   }, [dropdownOpen]);
 
-  // Close mobile menu on navigation
   useEffect(() => {
     if (!mobileMenuOpen) setDropdownOpen(false);
   }, [mobileMenuOpen]);
@@ -44,7 +43,6 @@ const Navbar = () => {
   return (
     <>
       <nav className="bg-gradient-to-r from-white via-blue-100 to-blue-200 h-20 md:h-28 px-4 md:px-8 flex items-center sticky top-0 backdrop-blur-md z-50">
-        {/* Logo */}
         <Link to="/" className="flex-shrink-0">
           <img
             className="h-12 w-12 md:h-16 md:w-16 rounded-full object-contain border-2 border-green-200 shadow"
@@ -53,7 +51,6 @@ const Navbar = () => {
           />
         </Link>
 
-        {/* Desktop Menu */}
         <div className="hidden md:flex flex-1 justify-end items-center gap-4 text-xl font-bold">
           <div>
             {user && user.role === "patient" && (
@@ -179,7 +176,6 @@ const Navbar = () => {
         </div>
       </nav>
 
-      {/* Mobile Menu */}
       {mobileMenuOpen && (
         <div className="md:hidden fixed inset-0 bg-black bg-opacity-40 z-50 flex flex-col">
           <div className="bg-gradient-to-r from-white via-blue-100 to-blue-200 w-full shadow-lg py-6 px-4 flex flex-col gap-4">

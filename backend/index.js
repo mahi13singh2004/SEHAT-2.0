@@ -1,6 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
-import connectDB from "./DB/connectDB.js";
+import connectDB from "./db/connectDB.js";
 import authRoutes from "./routes/auth.route.js";
 import aiRoutes from "./routes/ai.route.js"
 import appointmentRoutes from "./routes/appointment.route.js"

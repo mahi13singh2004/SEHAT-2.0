@@ -8,28 +8,27 @@ import feature5 from "../assets/feature5.jpg"
 import feature6 from "../assets/feature6.jpg"
 import { Link } from 'react-router-dom'
 
-
 const Home = () => {
   return (
     <>
       <div className='w-full min-h-[calc(100vh-7rem)] bg-gradient-to-r from-white via-blue-100 to-blue-200'>
-        <div className='hero bg-gradient-to-r from-white via-blue-100 to-blue-200 w-full h-[70vh] flex' >
-          <div className='w-1/2 h-full overflow-hidden'>
-            <img className='w-full h-full rounded-full' src={header} />
+        <div className='hero bg-gradient-to-r from-white via-blue-100 to-blue-200 w-full flex flex-col-reverse md:flex-row items-center md:h-[70vh]'>
+          <div className='w-full md:w-1/2 flex justify-center items-center mt-8 md:mt-0'>
+            <img className='w-40 h-40 md:w-2/3 md:h-full rounded-full object-cover' src={header} alt="Header" />
           </div>
-
-          <div className='w-1/2 h-full justify-center items-center flex flex-col p-12'>
-            <h1 className='text-6xl font-bold mb-12'>WELCOME TO</h1>
-            <h1 className='text-6xl font-bold mb-12 text-green-500'>SEHAT</h1>
-            <p className='text-xl leading-12 text-center mb-10'>Tired of juggling different apps and clinics for your healthcare? <span className='text-green-600'>SEHAT</span> is your one-stop solution. We bring comprehensive care to your fingertips. Instantly book appointments, connect with mental wellness experts, or find dedicated maternity support—all in one place. Your <span className='text-green-600'>HEALTH</span>, simplified.</p>
-
-            <button className='px-6 py-4 cursor-pointer rounded-full bg-green-400 hover:bg-green-500 transition-colors duration-200 text-white font-semibold shadow text-lg'>Learn More</button>
+          <div className='w-full md:w-1/2 flex flex-col justify-center items-center p-4 md:p-12'>
+            <h1 className='text-3xl md:text-6xl font-bold mb-4 md:mb-12 text-center'>WELCOME TO</h1>
+            <h1 className='text-3xl md:text-6xl font-bold mb-4 md:mb-12 text-green-500 text-center'>SEHAT</h1>
+            <p className='text-base md:text-xl leading-7 md:leading-12 text-center mb-6 md:mb-10'>
+              Tired of juggling different apps and clinics for your healthcare? <span className='text-green-600'>SEHAT</span> is your one-stop solution. We bring comprehensive care to your fingertips. Instantly book appointments, connect with mental wellness experts, or find dedicated maternity support—all in one place. Your <span className='text-green-600'>HEALTH</span>, simplified.
+            </p>
+            <button className='px-4 py-2 md:px-6 md:py-4 cursor-pointer rounded-full bg-green-400 hover:bg-green-500 transition-colors duration-200 text-white font-semibold shadow text-base md:text-lg'>Learn More</button>
           </div>
         </div>
 
-        <div>
-          <h1 className="text-5xl font-bold text-center my-8 mb-20">Our Features</h1>
-          <div className='grid grid-cols-1 md:grid-cols-3 gap-18 justify-center'>
+        <div className="px-2 md:px-8">
+          <h1 className="text-3xl md:text-5xl font-bold text-center my-8 mb-10 md:mb-20">Our Features</h1>
+          <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 justify-center'>
             {[{
               img: feature1,
               title: 'Appointment Booking',
@@ -63,15 +62,15 @@ const Home = () => {
             }].map((f, i) => (
               <Link to={f.route} key={i} className="block focus:outline-none">
                 <div
-                  className='relative rounded-3xl p-1 w-80 mx-auto transition-transform duration-200 hover:scale-105 group bg-gradient-to-br from-green-100 via-blue-50 to-blue-400'
+                  className='relative rounded-3xl p-1 w-full max-w-xs mx-auto transition-transform duration-200 hover:scale-105 group bg-gradient-to-br from-green-100 via-blue-50 to-blue-400'
                 >
-                  <div className='bg-white bg-opacity-90 rounded-2xl shadow-xl p-8 flex flex-col items-center h-full'>
-                    <div className="absolute -top-10 left-1/2 -translate-x-1/2 flex items-center justify-center w-24 h-24 rounded-full bg-gradient-to-br from-green-300 via-blue-400 to-green-100 shadow-lg border-4 border-white">
-                      <img className='h-16 w-16 object-cover rounded-xl' src={f.img} alt={f.title} />
+                  <div className='bg-white bg-opacity-90 rounded-2xl shadow-xl p-6 md:p-8 flex flex-col items-center h-full'>
+                    <div className="absolute -top-10 left-1/2 -translate-x-1/2 flex items-center justify-center w-20 h-20 md:w-24 md:h-24 rounded-full bg-gradient-to-br from-green-300 via-blue-400 to-green-100 shadow-lg border-4 border-white">
+                      <img className='h-12 w-12 md:h-16 md:w-16 object-cover rounded-xl' src={f.img} alt={f.title} />
                     </div>
-                    <div className="mt-16 flex flex-col items-center">
-                      <h2 className='text-2xl font-extrabold mb-2 text-blue-700 text-center drop-shadow'>{f.title}</h2>
-                      <p className='text-gray-600 text-center text-base font-medium'>{f.desc}</p>
+                    <div className="mt-12 md:mt-16 flex flex-col items-center">
+                      <h2 className='text-lg md:text-2xl font-extrabold mb-2 text-blue-700 text-center drop-shadow'>{f.title}</h2>
+                      <p className='text-gray-600 text-center text-sm md:text-base font-medium'>{f.desc}</p>
                     </div>
                   </div>
                 </div>
@@ -79,11 +78,14 @@ const Home = () => {
             ))}
           </div>
         </div>
-        <footer className="mt-20 py-6 bg-gradient-to-r from-blue-50 via-green-100 to-blue-200 rounded-t-2xl shadow-inner flex flex-col items-center">
+
+
+        <footer className="mt-10 md:mt-20 py-6 bg-gradient-to-r from-blue-50 via-green-100 to-blue-200 rounded-t-2xl shadow-inner flex flex-col items-center">
           <span className="text-lg font-bold text-green-700">SEHAT</span>
           <span className="text-gray-500 text-sm">&copy; {new Date().getFullYear()} SEHAT. All rights reserved.</span>
           <span className="text-gray-400 text-xs mt-1">Your health, our priority.</span>
           <div className="flex gap-4 mt-2">
+            {/* Social icons unchanged */}
             <a href="#" target="_blank" rel="noopener noreferrer" className="hover:text-blue-700" aria-label="LinkedIn">
               <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-9h3v9zm-1.5-10.28c-.97 0-1.75-.79-1.75-1.75s.78-1.75 1.75-1.75 1.75.79 1.75 1.75-.78 1.75-1.75 1.75zm13.5 10.28h-3v-4.5c0-1.08-.02-2.47-1.5-2.47-1.5 0-1.73 1.17-1.73 2.39v4.58h-3v-9h2.89v1.23h.04c.4-.75 1.38-1.54 2.84-1.54 3.04 0 3.6 2 3.6 4.59v4.72z" /></svg>
             </a>

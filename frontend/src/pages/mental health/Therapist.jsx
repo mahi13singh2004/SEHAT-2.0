@@ -26,7 +26,7 @@ const Therapist = () => {
           <form onSubmit={handleSubmit} className="flex flex-col gap-4">
             <input
               type="text"
-              placeholder="Hey Threre, I am your frindly nwighbourhood therapsit, talk whatever you want to"
+              placeholder="Hey there! I'm your friendly neighborhood therapist — like Spider-Man, but for your feelings.🕸️🧠"
               value={prompt}
               onChange={(e) => setPrompt(e.target.value)}
               className="px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400 text-base md:text-lg shadow-sm"

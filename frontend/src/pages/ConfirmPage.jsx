@@ -23,7 +23,6 @@ const ConfirmPage = () => {
         }
     }, [user, selectedDoctor, selectedTime, navigate])
 
-    // Uploads images to /image/upload and PDFs to /raw/upload
     const handleFileChange = async (e) => {
         const selected = e.target.files[0];
         if (!selected) return;
@@ -66,10 +65,10 @@ const ConfirmPage = () => {
     }
 
     return (
-        <div className="min-h-[calc(100vh-7rem)] flex items-center justify-center bg-gradient-to-br from-blue-50 via-green-100 to-blue-200 py-12 px-4">
-            <div className="w-full max-w-2xl bg-white rounded-2xl shadow-2xl p-8 flex flex-col gap-8">
-                <h2 className="text-3xl font-extrabold text-blue-700 mb-2 text-center">Confirm Your Appointment</h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="min-h-[calc(100vh-7rem)] flex items-center justify-center bg-gradient-to-br from-blue-50 via-green-100 to-blue-200 py-8 md:py-12 px-2 md:px-4">
+            <div className="w-full max-w-2xl bg-white rounded-2xl shadow-2xl p-4 md:p-8 flex flex-col gap-8">
+                <h2 className="text-2xl md:text-3xl font-extrabold text-blue-700 mb-2 text-center">Confirm Your Appointment</h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                     <div className="bg-blue-50 rounded-xl p-6 border border-blue-200 shadow flex flex-col gap-2">
                         <h3 className="text-xl font-bold text-blue-700 mb-2">Your Details</h3>
                         <p className="text-gray-700"><span className="font-semibold">Name:</span> {user?.name}</p>
@@ -82,11 +81,10 @@ const ConfirmPage = () => {
                         <p className="text-gray-700"><span className="font-semibold">Specialization:</span> {selectedDoctor?.specialization}</p>
                     </div>
                 </div>
-                <div className="bg-yellow-50 rounded-xl p-6 border border-yellow-200 shadow flex flex-col gap-2 items-center">
+                <div className="bg-yellow-50 rounded-xl p-4 md:p-6 border border-yellow-200 shadow flex flex-col gap-2 items-center">
                     <h3 className="text-xl font-bold text-yellow-700 mb-2">Appointment Time</h3>
                     <p className="text-gray-700 text-lg">{selectedTime || ''}</p>
                 </div>
-                {/* File Upload */}
                 <div className="flex flex-col gap-2 items-center">
                     <label className="font-semibold text-blue-700">Attach Image/Document (optional):</label>
                     <input
@@ -99,7 +97,6 @@ const ConfirmPage = () => {
                     {uploadError && <p className="text-red-500 text-sm">{uploadError}</p>}
                     {fileUrl && (
                         <div className="mt-2">
-                            {/* Robust PDF check: if fileType is PDF or URL contains /raw/upload/ */}
                             {fileType === 'application/pdf' || fileUrl.includes('/raw/upload/') ? (
                                 <a href={fileUrl} target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">View PDF</a>
                             ) : (

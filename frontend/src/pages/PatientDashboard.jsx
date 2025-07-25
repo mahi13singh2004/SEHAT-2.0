@@ -83,9 +83,9 @@ const PatientDashboard = () => {
   };
 
   return (
-    <div className="min-h-[calc(100vh-7rem)] flex items-stretch bg-gradient-to-br from-blue-50 via-green-100 to-blue-200 py-8 px-4">
-      <div className="w-full max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div className="col-span-1 bg-white rounded-2xl shadow-2xl p-8 flex flex-col gap-8 justify-between min-h-[32rem]">
+    <div className="min-h-[calc(100vh-7rem)] flex items-stretch bg-gradient-to-br from-blue-50 via-green-100 to-blue-200 py-6 md:py-8 px-2 md:px-4">
+      <div className="w-full max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
+        <div className="col-span-1 bg-white rounded-2xl shadow-2xl p-4 md:p-8 flex flex-col gap-8 justify-between min-h-[32rem]">
           <div>
             <h2 className="text-2xl font-extrabold text-blue-700 mb-4 text-center">Patient Dashboard</h2>
             <div className="flex flex-col gap-4">
@@ -108,8 +108,8 @@ const PatientDashboard = () => {
             </div>
           </div>
         </div>
-        <div className="col-span-2 flex flex-col gap-8">
-          <div className="flex gap-4 mb-4">
+        <div className="col-span-2 flex flex-col gap-4 md:gap-8">
+          <div className="flex gap-2 md:gap-4 mb-4 flex-wrap">
             <button
               className={`px-6 py-2 rounded-t-lg font-bold text-lg transition-colors duration-200 focus:outline-none ${tab === 'current' ? 'bg-blue-500 text-white shadow' : 'bg-blue-100 text-blue-700 hover:bg-blue-200'}`}
               onClick={() => setTab('current')}
@@ -126,7 +126,7 @@ const PatientDashboard = () => {
           {err && <p className="text-red-500 text-center font-semibold mt-2">{err}</p>}
           {loading && <Spinner className="my-8" />}
           {!loading && (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
               {(tab === 'current' ? currentAppointments : pastAppointments).length === 0 ? (
                 <p className="text-gray-500 text-center text-lg col-span-2">No {tab === 'current' ? 'current' : 'past'} appointments</p>
               ) : (

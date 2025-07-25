@@ -21,6 +21,8 @@ import VaultPage from './pages/features/VaultPage.jsx'
 import Landing from './pages/mental health/Landing.jsx'
 import Therapist from './pages/mental health/Therapist.jsx'
 import Resources from './pages/mental health/Resources.jsx'
+import Maps from './pages/mental health/Maps.jsx'
+import Maternity from './pages/Maternity.jsx'
 
 const App = () => {
   const { checkAuth } = useAuthStore()
@@ -46,6 +48,8 @@ const App = () => {
         <Route path="/mentalHealth" element={<Landing />} />
         <Route path="/therapist" element={<Therapist />} />
         <Route path="/resources" element={<Resources />} />
+        <Route path="/maps" element={<Maps />} />
+        <Route path="/maternity" element={<Maternity />} />
       </Routes>
     </>
   )

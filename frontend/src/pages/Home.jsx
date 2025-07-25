@@ -43,7 +43,7 @@ const Home = () => {
             }, {
               img: feature3,
               title: 'Maternity Center',
-              desc: 'Get support and guidance for your pregnancy journey.',
+              desc: 'COMING SOON.',
               route: '/maternity'
             }, {
               img: feature4,

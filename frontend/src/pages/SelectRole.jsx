@@ -8,10 +8,10 @@ const SelectRole = () => {
         navigate(`/signup/${role}`)
     }
     return (
-        <div className="flex flex-col items-center justify-center min-h-[calc(100vh-7rem)] bg-gradient-to-br from-blue-50 via-green-100 to-blue-200 py-12 px-4">
-            <h1 className="text-4xl md:text-5xl font-extrabold text-blue-700 mb-2 text-center drop-shadow">Choose Your Role</h1>
-            <p className="text-lg md:text-xl text-gray-600 mb-10 text-center">Are you a Doctor or a Patient? Select your role to continue.</p>
-            <div className="flex flex-col md:flex-row gap-8 w-full max-w-3xl justify-center">
+        <div className="flex flex-col items-center justify-center min-h-[calc(100vh-7rem)] bg-gradient-to-br from-blue-50 via-green-100 to-blue-200 py-6 md:py-12 px-2 md:px-4">
+            <h1 className="text-3xl md:text-5xl font-extrabold text-blue-700 mb-2 text-center drop-shadow">Choose Your Role</h1>
+            <p className="text-base md:text-lg text-gray-600 mb-8 md:mb-10 text-center">Are you a Doctor or a Patient? Select your role to continue.</p>
+            <div className="flex flex-col md:flex-row gap-6 md:gap-8 w-full max-w-3xl justify-center">
                 <button
                     onClick={() => handleRole('doctor')}
                     className="flex-1 bg-white rounded-2xl shadow-xl p-8 flex flex-col items-center transition-transform transform hover:-translate-y-2 hover:shadow-2xl border-2 border-transparent hover:border-blue-400 focus:outline-none"

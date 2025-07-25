@@ -25,11 +25,11 @@ const Login = () => {
   }
 
   return (
-    <div className="min-h-[calc(100vh-7rem)] flex items-center justify-center bg-gradient-to-br from-blue-50 via-green-100 to-blue-200 py-8 px-4">
+    <div className="min-h-[calc(100vh-7rem)] flex items-center justify-center bg-gradient-to-br from-blue-50 via-green-100 to-blue-200 py-6 md:py-8 px-2 md:px-4">
       <div className="w-full max-w-4xl min-h-[32rem] bg-white rounded-2xl shadow-2xl flex flex-col md:flex-row overflow-hidden">
         <div className="hidden md:block md:w-1/2 bg-cover bg-center" style={{ backgroundImage: `url(${loginPhoto})` }}>
         </div>
-        <div className="w-full md:w-1/2 flex flex-col justify-center p-8">
+        <div className="w-full md:w-1/2 flex flex-col justify-center p-4 md:p-8">
           <form onSubmit={handleSubmit} className="flex flex-col gap-6">
             <h2 className="text-3xl font-extrabold text-blue-700 mb-2 text-center">Login</h2>
             <input

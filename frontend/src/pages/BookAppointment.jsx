@@ -38,10 +38,10 @@ const BookAppointment = () => {
     }
 
     return (
-        <div className="min-h-[calc(100vh-7rem)] flex items-center justify-center bg-gradient-to-br from-blue-50 via-green-100 to-blue-200 py-12 px-4">
-            <div className="w-full max-w-3xl bg-white rounded-2xl shadow-2xl p-8 flex flex-col gap-8">
-                <h2 className="text-3xl font-extrabold text-blue-700 mb-2 text-center">Book An Appointment</h2>
-                <div className="flex flex-col md:flex-row gap-6 items-center justify-center">
+        <div className="min-h-[calc(100vh-7rem)] flex items-center justify-center bg-gradient-to-br from-blue-50 via-green-100 to-blue-200 py-8 md:py-12 px-2 md:px-4">
+            <div className="w-full max-w-3xl bg-white rounded-2xl shadow-2xl p-4 md:p-8 flex flex-col gap-8">
+                <h2 className="text-2xl md:text-3xl font-extrabold text-blue-700 mb-2 text-center">Book An Appointment</h2>
+                <div className="flex flex-col md:flex-row gap-4 md:gap-6 items-center justify-center">
                     <textarea
                         className="w-full md:w-2/3 min-h-[100px] px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400 text-lg resize-none shadow"
                         placeholder='Enter Your Symptoms (e.g. chest pains and heart issue)'
@@ -50,7 +50,7 @@ const BookAppointment = () => {
                     <button
                         onClick={handleAIRecommendation}
                         disabled={loading || !description}
-                        className="mt-4 md:mt-0 px-8 py-3 rounded-lg bg-blue-500 hover:bg-blue-600 text-white font-bold text-lg transition-colors duration-200 shadow disabled:opacity-60 disabled:cursor-not-allowed"
+                        className="mt-4 md:mt-0 px-8 py-3 rounded-lg bg-blue-500 hover:bg-blue-600 text-white font-bold text-lg transition-colors duration-200 shadow disabled:opacity-60 disabled:cursor-not-allowed w-full md:w-auto"
                     >
                         {loading ? <Spinner size={20} className="inline-block align-middle" /> : "Submit"}
                     </button>
@@ -82,7 +82,7 @@ const BookAppointment = () => {
                 <button
                     disabled={loading}
                     onClick={handleManualFetch}
-                    className="px-8 py-3 rounded-lg bg-blue-400 hover:bg-blue-500 text-white font-bold text-lg transition-colors duration-200 shadow disabled:opacity-60 disabled:cursor-not-allowed mx-auto"
+                    className="px-8 py-3 rounded-lg bg-blue-400 hover:bg-blue-500 text-white font-bold text-lg transition-colors duration-200 shadow disabled:opacity-60 disabled:cursor-not-allowed mx-auto w-full md:w-auto"
                 >
                     {loading ? <Spinner size={20} className="inline-block align-middle" /> : "Choose Manually"}
                 </button>
@@ -90,7 +90,7 @@ const BookAppointment = () => {
                 {manualDoctors.length > 0 && (
                     <div className="mt-6">
                         <h2 className="text-2xl font-bold text-green-700 mb-4">Available Doctors</h2>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                             {manualDoctors.map((doc) => (
                                 <div
                                     key={doc._id}

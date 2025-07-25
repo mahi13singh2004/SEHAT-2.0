@@ -14,14 +14,14 @@ const TimeSlot = () => {
     }
 
     return (
-        <div className="min-h-[calc(100vh-7rem)] flex items-center justify-center bg-gradient-to-br from-blue-50 via-green-100 to-blue-200 py-12 px-4">
-            <div className="w-full max-w-xl bg-white rounded-2xl shadow-2xl p-8 flex flex-col gap-8">
-                <h2 className="text-3xl font-extrabold text-blue-700 mb-2 text-center">Select A Time Slot</h2>
-                <div className="bg-blue-50 rounded-xl p-6 border border-blue-200 shadow flex flex-col gap-2 mb-4">
+        <div className="min-h-[calc(100vh-7rem)] flex items-center justify-center bg-gradient-to-br from-blue-50 via-green-100 to-blue-200 py-6 md:py-12 px-2 md:px-4">
+            <div className="w-full max-w-xl bg-white rounded-2xl shadow-2xl p-4 md:p-8 flex flex-col gap-8">
+                <h2 className="text-2xl md:text-3xl font-extrabold text-blue-700 mb-2 text-center">Select A Time Slot</h2>
+                <div className="bg-blue-50 rounded-xl p-4 md:p-6 border border-blue-200 shadow flex flex-col gap-2 mb-4">
                     <h4 className="text-xl font-bold text-blue-700 mb-2">Doctor: <span className="text-gray-800">{selectedDoctor.name}</span></h4>
                     <p className="text-gray-700 mb-1"><span className="font-semibold">Specialization:</span> {selectedDoctor.specialization}</p>
                 </div>
-                <div className="flex flex-wrap gap-4 justify-center">
+                <div className="flex flex-wrap gap-2 md:gap-4 justify-center">
                     {selectedDoctor.workingHours.map((slot) => (
                         <button
                             key={slot}

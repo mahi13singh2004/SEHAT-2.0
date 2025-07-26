@@ -48,7 +48,6 @@ export const useAuthStore = create((set) => ({
       );
       set({ user: res.data.user });
     } catch (error) {
-      console.log("Check Auth Error:", error);
       set({
         user: null,
         err: error.response?.data?.message || "Unable to authenticate",
@@ -68,8 +67,9 @@ export const useAuthStore = create((set) => ({
       );
       set({ user: null });
     } catch (error) {
-      console.log("Logout Error:", error);
-      set({ err: "Logout failed" });
+      set({
+        err: error.response?.data?.message || "Unable to authenticate",
+      });
     } finally {
       set({ loading: false });
     }

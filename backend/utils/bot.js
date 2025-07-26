@@ -42,18 +42,15 @@ cron.schedule("* * * * *", async () => {
   const today = new Intl.DateTimeFormat("en-US", { weekday: "short" }).format(
     now
   );
-  console.log("Checking reminders for", time, today);
 
   const reminders = await Reminder.find({
     time,
     isOn: true,
     days: { $in: [today] },
   });
-  console.log("Reminders found:", reminders);
 
   for (const r of reminders) {
     const user = await User.findById(r.userId);
-    console.log("User for reminder:", user);
     if (user?.chatId) {
       bot.sendMessage(
         user.chatId,

@@ -15,7 +15,6 @@ export const reminder = async (req, res) => {
     });
     return res.status(200).json({ message: "Reminder Created Successfully" });
   } catch (error) {
-    console.log("Error in reminder", error);
     return res.status(500).json({ message: "Internal Server Error" });
   }
 };

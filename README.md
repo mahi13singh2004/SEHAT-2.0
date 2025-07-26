@@ -103,7 +103,9 @@ Your mind matters too. Includes:
      ```
    - In `frontend/`, add:
      ```
-     VITE_API_URL=http://localhost:5000
+      VITE_CLOUDINARY_UPLOAD_PRESET
+      VITE_CLOUDINARY_CLOUD_NAME
+      VITE_GOOGLE_MAPS_API_KEY
      ```
 5. Run the backend:
    ```bash

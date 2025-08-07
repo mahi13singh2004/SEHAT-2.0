@@ -10,18 +10,18 @@ const Landing = () => {
             <div className="flex flex-col md:flex-row w-full max-w-9xl h-auto md:h-[45vh] rounded-3xl shadow-xl bg-white/80 backdrop-blur-md overflow-hidden mb-12">
                 <div className="md:w-2/3 w-full flex flex-col justify-center items-center gap-6 md:gap-10 px-4 md:px-10 py-6 md:py-0">
                     <h1
-                        className="text-4xl md:text-6xl font-bold text-purple-700 drop-shadow-lg mb-2"
+                        className="text-4xl md:text-6xl font-bold text-purple-700 drop-shadow-lg"
                     >
                         SEHAT-SANCTUM
                     </h1>
                     <p
-                        className="text-xl md:text-3xl font-semibold text-center text-gray-700 mb-2"
+                        className="text-xl md:text-3xl font-semibold text-center text-gray-700"
 
                     >
                         Your One Stop Platform For Mental Health Fitness
                     </p>
                     <p
-                        className="text-lg md:text-2xl text-center text-gray-600 mb-6"
+                        className="text-lg md:text-2xl text-center text-gray-600"
 
                     >
                         Squat your worries away (mentally, of course)
@@ -34,7 +34,7 @@ const Landing = () => {
                 </div>
                 <div className="md:w-1/3 w-full flex items-center justify-center bg-gradient-to-tl from-purple-100 to-pink-100">
                     <img
-                        className="w-full max-w-xs md:max-w-lg p-2 md:p-5 h-48 md:h-full rounded-full object-cover shadow-2xl"
+                        className="w-[85%] max-w-xs md:max-w-lg p-2 md:p-5 h-48 md:h-full rounded-full object-cover shadow-2xl"
                         src={image1}
                         alt="Mental wellness"
                     />

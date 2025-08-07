@@ -11,7 +11,7 @@ const RestrictedRoute = ({ children }) => {
     }
   }, [user, checkAuth]);
 
-  if (loading) return <p>....Loading</p>
+  if (loading) return <Spinner className="my-12" />
   if (user) return <Navigate to="/" />
   return children
 }
